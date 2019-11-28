@@ -26,12 +26,11 @@ us_census['Income'] = us_census['Income'].replace('\$', '', regex=True)
 print(us_census.head())
 
 #6
-us_census[['Male', 'Female']] = us_census.GenderPop.str.split('_', expand=True)
+us_census[['Men', 'Women']] = us_census.GenderPop.str.split('_', expand=True)
 
 #7
-us_census[['Male', 'Female']] = us_census[['Male', 'Female']].replace('(F|M)', '', regex=True)
-us_census['Female'] = pandas.to_numeric(us_census['Female'])
-us_census['Male'] = pandas.to_numeric(us_census['Male'])
-print(us_census.dtypes)
+us_census[['Men', 'Women']] = us_census[['Men', 'Women']].replace('(F|M)', '', regex=True)
+us_census['Women'] = pandas.to_numeric(us_census['Women'])
+us_census['Men'] = pandas.to_numeric(us_census['Men'])
 
 #8
