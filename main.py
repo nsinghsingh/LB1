@@ -1,6 +1,6 @@
 import pandas as pandas
 import numpy as numpy
-import matplotlib
+import matplotlib.pyplot as plt
 import seaborn as sns
 import glob
 
@@ -32,5 +32,17 @@ us_census[['Men', 'Women']] = us_census.GenderPop.str.split('_', expand=True)
 us_census[['Men', 'Women']] = us_census[['Men', 'Women']].replace('(F|M)', '', regex=True)
 us_census['Women'] = pandas.to_numeric(us_census['Women'])
 us_census['Men'] = pandas.to_numeric(us_census['Men'])
+print(us_census.head())
 
 #8
+plt.scatter(us_census['Women'], us_census['Income'])
+plt.show()
+
+#9
+us_census = us_census.fillna(value={"Women":us_census['TotalPop'] - us_census['Men']})
+print(us_census.head())
+
+#10
+duplicates = us_census.duplicated()
+print(duplicates)
+
