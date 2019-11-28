@@ -3,6 +3,8 @@ import numpy as numpy
 import matplotlib.pyplot as plt
 import seaborn as sns
 import glob
+import matplotlib
+matplotlib.use('Agg')
 
 #2
 states_files = glob.glob("states*.csv")
